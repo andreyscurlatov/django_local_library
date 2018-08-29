@@ -1,0 +1,23 @@
+﻿{% extends 'base.html' %}
+
+{% block content %}
+
+	<h1>Районная библиотека (начальная страница)</h1>
+	
+	<p>Добро пожаловать на сайт районной библиотеки!</p>
+
+	<h2>Книжный фонд</h2>	
+
+	<p>Библиотека содержит следующие материалы:</p>
+
+	<ul>
+		<li><strong>Книги:</strong>{{ num_books }}</li>
+		<li><strong>Авторы:</strong>{{ num_authors }}</li>
+		<li><strong>Экземпляры:</strong>{{ num_instances }}</li>
+		<li><strong>Экземпляры свободные:</strong>{{ num_instances_avail }}</li>			
+	</ul>
+
+	<p>You have visited this page {{ num_visits }}{% if num_visits == 1 %} time{% else %} times{% endif %}</p>
+
+{% endblock %}
+

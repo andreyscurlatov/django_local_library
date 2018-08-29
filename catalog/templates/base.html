@@ -1,0 +1,55 @@
+﻿<html lang='ru'>
+<head>
+	<meta charset='utf-8'>
+	{% block title %}<title>Районная библиотека</title>{% endblock %}
+</head>
+<body>
+	<div class='container-fluid'>
+		<div class='row'>
+			<div class='col-sm-2'>
+				{% block sidebar %}
+					<ul class='sidebar-nav'>
+						<li><a href='{% url 'index' %}'>Начальная страница</a></li>
+						<li><a href='{% url 'books' %}'>Все книги</a></li>
+						<li><a href='{% url 'authors' %}'>Все авторы</a></li>
+						<p></p>
+						{% if user.is_authenticated %}
+							<li>Пользователь: {{ user.first_name }} ({{ user.get_username }})</li>
+							<li><a href='{% url 'my-borrowed' %}'>Мои книги</a></li>
+							<li><a href='{% url 'logout' %}?next={{ request.path }}'>Выход</a></li>							
+							{% if perms.catalog.can_mark_returned %}
+								<hr>										
+								<h3>Обслуживание читателей</h3>
+								<a href='{% url 'all-borrowed' %}'>Выданные экземпляры</a></p>
+								<a href='{% url 'book-instance-create' %}'>Создать экземпляр</a></p>								
+								<a href='{% url 'book-instance-avail' %}'>Свободные экземпляры</a></p>							
+							{% endif %}
+						{% else %}
+							<li><a href='{% url 'login' %}?next={{ request.path }}'>Вход</a></li>
+						{% endif %}
+					</ul>
+				{% endblock %}
+			</div>
+			<div class='col-sm-10'>{% block content %}{% endblock %}</div>
+
+			{% block pagination %}
+				{% if is_paginated %}
+					<div class='pagination'>
+						<span class='page_links'>
+							<span class='page-current'>
+								<p>Страница {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}.</p>
+							</span>		
+							{% if page_obj.has_previous %}
+								<a href='{{ request.path }}?page={{ page_obj.previous_page_number }}'>Предыдущая</a>
+							{% endif %}							
+							{% if page_obj.has_next %}
+								<a href='{{ request.path }}?page={{ page_obj.next_page_number }}'>Следующая</a>
+							{% endif %}								
+						</span>
+					</div>
+				{% endif %}
+			{% endblock %}			
+		</div>
+	</div>
+</body>
+</html>

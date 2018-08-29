@@ -1,0 +1,24 @@
+﻿{% extends 'base.html' %}
+
+{% block content %}	
+
+	<h1>Взятые книги</h1>
+
+	{% if bookinstance_list %}
+
+	<ul>
+		{% for bookinst in bookinstance_list %}
+
+		<li><a href='{{ bookinst.book.get_absolute_url }}'>{{ bookinst.book.title }}</a> ({{ bookinst.due_back }})</li>
+		
+		{% endfor %}
+	</ul>
+
+	{% else %}
+
+		<p>Взятых книг нет</p>
+
+	{% endif %}
+
+{% endblock %}
+

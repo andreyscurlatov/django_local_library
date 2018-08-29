@@ -1,0 +1,25 @@
+﻿{% extends 'base.html' %}
+
+{% block content %}	
+
+	<h1>Все свободные экземпляры</h1>
+
+	{% if bookinstance_list %}
+
+	<ul>
+		{% for bookinst in bookinstance_list %}
+
+		<li><a href='{{ bookinst.book.get_absolute_url }}'>{{ bookinst.book.title }}</a> {% if perms.catalog.can_mark_returned %} - <a href='{% url 'book-instance-update' bookinst.id %}'>Выдать экземпляр</a>
+																	  - <a href='{% url 'book-instance-delete' bookinst.id %}'>Удалить экземпляр</a>{% endif %}</li>
+		
+		{% endfor %}
+	</ul>
+
+	{% else %}
+
+		<p>Нет свободных экземпляров</p>
+
+	{% endif %}
+
+{% endblock %}
+

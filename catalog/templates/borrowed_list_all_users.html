@@ -1,0 +1,23 @@
+﻿{% extends 'base.html' %}
+
+{% block content %}	
+
+	<h1>Все выданные экземпляры</h1>
+
+	{% if bookinstance_list %}
+
+	<ul>
+		{% for bookinst in bookinstance_list %}
+
+		<li><a href='{{ bookinst.book.get_absolute_url }}'>{{ bookinst.book.title }}</a> ({{ bookinst.due_back }}) - {{ bookinst.borrower }}{% if perms.catalog.can_mark_returned %} - <a href='{% url 'book-instance-update' bookinst.id %}'>Принять экземпляр</a>{% endif %}</li>
+		
+		{% endfor %}
+	</ul>
+
+	{% else %}
+
+		<p>Нет выданных экземпляров</p>
+
+	{% endif %}
+
+{% endblock %}
