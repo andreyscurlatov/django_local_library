@@ -1,10 +1,10 @@
-{% extends 'base.html' %}
+﻿{% extends 'base.html' %}
 
 {% block content %}
 
 {% if form.errors %}
 
-	<p>Your username and password did`t match. Please try again.</p>
+	<p>Ваше имя и пароль не верны. Пожалуйста, попробуйте снова.</p>
 
 {% endif %}
 
@@ -12,12 +12,12 @@
 
 	{% if user.is_authenticated %}
 
-		<p>Your account doesn`t have access to this page. To proceed,
-		please login with an account that has access.</p>
+		<p>Ваш аккаунт не имеет доступа к этой странице. Чтобы продолжить,
+		пожалуйста авторизуйтесь с помощью аккаунта, имеющего такой доступ.</p>
 
 	{% else %}
 
-		<p>Please login to see this page.</p>
+		<p>Пожалуйста, авторизуйтесь для просмотра этой страницы.</p>
 
 	{% endif %}
 
@@ -44,6 +44,6 @@
 </form>
 
 
-<p><a href='{% url 'password_reset' %}'>Lost password?</a></p>
+<p><a href='{% url 'password_reset' %}'>Забыли пароль?</a></p>
 
 {% endblock %}
