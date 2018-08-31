@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'oyw^&y#h&!!)yn7z4bdq_wz86@7i7z%h5^#30n2+p(gjd!x^+h'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['schoollibrary.herokuapp.com','127.0.0.1']
 
 EMAIL_HOST='smtp.localhost.com'
 EMAIL_HOST_USER='test1'
