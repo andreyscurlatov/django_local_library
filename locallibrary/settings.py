@@ -16,6 +16,7 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
@@ -25,7 +26,7 @@ SECRET_KEY = 'oyw^&y#h&!!)yn7z4bdq_wz86@7i7z%h5^#30n2+p(gjd!x^+h'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['schoollibrary.herokuapp.com','127.0.0.1']
+ALLOWED_HOSTS = ['schoollibrary.herokuapp.com','127.0.0.1','localhost']
 
 EMAIL_HOST='smtp.localhost.com'
 EMAIL_HOST_USER='test1'
@@ -136,6 +137,11 @@ db_from_env=dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
 
 STATIC_ROOT=os.path.join(BASE_DIR,'staticfiles')
+
+STATICFILES_DIRS=[
+    os.path.join(BASE_DIR,'static'),
+    ]
+
 
 STATICFILES_STORAGE='whitenoise.storage.CompressedManifestStaticFilesStorage'
 

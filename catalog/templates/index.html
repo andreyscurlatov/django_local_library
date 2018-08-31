@@ -17,7 +17,7 @@
 		<li><strong>Экземпляры свободные:</strong>{{ num_instances_avail }}</li>			
 	</ul>
 
-	<p>You have visited this page {{ num_visits }}{% if num_visits == 1 %} time{% else %} times{% endif %}</p>
+	<p>Вы посещали эту страницу {{ num_visits }}{% if num_visits == 1 or num_visits >= 5 %} раз{% elif num_visits >= 2 and num_visits <= 4 %} раза{% endif %}</p>
 
 {% endblock %}
 
